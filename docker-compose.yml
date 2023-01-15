@@ -1,0 +1,25 @@
+version: '3.10'
+services:
+  python_service:
+    build: .
+    ports:
+      - "8001:8000"
+    expose:
+      - '3306'
+    depends_on:
+      - db
+    links:
+      - db
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'test_task'
+      MYSQL_USER: 'dbuser'
+      MYSQL_PASSWORD: 'dbpassword'
+      MYSQL_ROOT_PASSWORD: 'root_password'
+    ports:
+      - '3306:3306'
+    volumes:             
+      - ./src/database/init_db:/docker-entrypoint-initdb.d
+
