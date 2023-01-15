@@ -7,6 +7,7 @@
 python3.10 -m venv venv
 source venv/bin/activate
 pip install -r requirements/development.txt
+uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 8000
 ```
 
 <b>run with docker-compose</b>
@@ -34,7 +35,7 @@ curl -X DELETE http://url:port/statistics/stats
 ```
 
 
-<b>for generating models by existing bd schema(if needed)</b>
+<b>for generating models by existing db schema(if needed)</b>
 ```html
 sqlacodegen  --outfile src/statistics/db_models.py  mysql://user:password@server_url:port/schema
 ```
