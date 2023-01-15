@@ -14,13 +14,14 @@ pip install -r requirements/development.txt
 docker-compose up -d --build
 ```
 
-<b>run test</b>
+<b>run tests</b>
 ```html
 docker-compose exec python_service pytest tests/test_statistics.py
 ```
 
 <h3>Endpoints</h3>
 <b>all other documentation provided by swagger ui (.../docs)</b>
+
 ```html
 - save stats
 curl -X POST http://url:port/statistics/stats -H "Content-Type: application/json" -d '{ "date" : "2023-01-09", "views": 1, "clicks" : 12, "cost": 13.00 }'
